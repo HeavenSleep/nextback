@@ -1,4 +1,4 @@
-# Nextcloud Backup Manager
+# NextBack | Nextcloud Backup Manager
 
 A comprehensive backup management system for Nextcloud instances with support for local backups, restoration, and remote uploads.
 
