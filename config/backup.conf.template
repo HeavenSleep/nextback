@@ -1,0 +1,171 @@
+# Nextcloud Backup Configuration Template
+# Copy this file to backup.conf and customize for your environment
+
+# =============================================================================
+# NEXTCLOUD CONFIGURATION
+# =============================================================================
+
+# Path to Nextcloud installation
+NEXTCLOUD_PATH=/var/www/nextcloud
+
+# Path to Nextcloud data directory (may be different from NEXTCLOUD_PATH/data)
+NEXTCLOUD_DATA_PATH=/var/www/nextcloud/data
+
+# Web server user (often www-data, apache, nginx, etc.)
+WEB_USER=www-data
+
+# =============================================================================
+# BACKUP CONFIGURATION
+# =============================================================================
+
+# Directory where backups will be stored
+BACKUP_DIR=/var/backups/nextcloud
+
+# Maximum number of backups to keep (0 = unlimited)
+MAX_BACKUPS=7
+
+# Whether to stop web server during backup (true/false)
+STOP_WEB_SERVER=false
+
+# =============================================================================
+# DATABASE CONFIGURATION
+# =============================================================================
+
+# Database type: mysql, mariadb, or pgsql
+DB_TYPE=mysql
+
+# Database connection details
+DB_HOST=localhost
+DB_NAME=nextcloud_db
+DB_USER=nextcloud_user
+DB_PASS=CHANGE_THIS_PASSWORD
+
+# Port (optional, defaults to standard ports)
+# DB_PORT=3306
+
+# =============================================================================
+# REMOTE UPLOAD CONFIGURATION
+# =============================================================================
+
+# Upload type: s3, sftp, ftp, or local
+UPLOAD_TYPE=s3
+
+# =============================================================================
+# AMAZON S3 CONFIGURATION (if UPLOAD_TYPE=s3)
+# =============================================================================
+
+# AWS credentials
+AWS_ACCESS_KEY_ID=CHANGE_THIS_ACCESS_KEY
+AWS_SECRET_ACCESS_KEY=CHANGE_THIS_SECRET_KEY
+AWS_REGION=us-east-1
+
+# S3 bucket name
+S3_BUCKET=CHANGE_THIS_BUCKET_NAME
+
+# Optional: S3 endpoint URL (for S3-compatible services)
+# S3_ENDPOINT_URL=https://s3.amazonaws.com
+
+# =============================================================================
+# FTP/SFTP CONFIGURATION (if UPLOAD_TYPE=ftp or UPLOAD_TYPE=sftp)
+# =============================================================================
+
+# FTP/SFTP server details
+FTP_HOST=CHANGE_THIS_HOST
+FTP_PORT=22
+FTP_USERNAME=CHANGE_THIS_USERNAME
+FTP_PASSWORD=CHANGE_THIS_PASSWORD
+
+# Remote directory for backups
+FTP_REMOTE_DIR=/backups/nextcloud
+
+# =============================================================================
+# LOCAL COPY CONFIGURATION (if UPLOAD_TYPE=local)
+# =============================================================================
+
+# Local directory for backup copies
+LOCAL_COPY_DIR=/mnt/backup-storage/nextcloud
+
+# =============================================================================
+# ENCRYPTION CONFIGURATION (optional)
+# =============================================================================
+
+# Enable backup encryption (true/false)
+ENABLE_ENCRYPTION=false
+
+# GPG recipient for encryption
+GPG_RECIPIENT=backup@example.com
+
+# =============================================================================
+# NOTIFICATION CONFIGURATION (optional)
+# =============================================================================
+
+# Email notifications (true/false)
+ENABLE_EMAIL_NOTIFICATIONS=false
+
+# Email settings
+SMTP_HOST=smtp.example.com
+SMTP_PORT=587
+SMTP_USERNAME=notifications@example.com
+SMTP_PASSWORD=your_smtp_password
+SMTP_FROM=Nextcloud Backup <backup@example.com>
+SMTP_TO=admin@example.com
+
+# =============================================================================
+# LOGGING CONFIGURATION
+# =============================================================================
+
+# Log level: DEBUG, INFO, WARN, ERROR
+LOG_LEVEL=INFO
+
+# Log retention days
+LOG_RETENTION_DAYS=30
+
+# =============================================================================
+# ADVANCED CONFIGURATION
+# =============================================================================
+
+# Compression level (1-9, higher = better compression but slower)
+COMPRESSION_LEVEL=6
+
+# Parallel upload threads (for S3)
+UPLOAD_THREADS=4
+
+# Timeout for remote operations (seconds)
+REMOTE_TIMEOUT=300
+
+# Verify backup integrity after creation (true/false)
+VERIFY_BACKUP=true
+
+# =============================================================================
+# EXAMPLE CONFIGURATIONS
+# =============================================================================
+
+# Example for MySQL/MariaDB:
+# DB_TYPE=mysql
+# DB_HOST=localhost
+# DB_NAME=nextcloud
+# DB_USER=nextcloud
+# DB_PASS=secure_password
+
+# Example for PostgreSQL:
+# DB_TYPE=pgsql
+# DB_HOST=localhost
+# DB_NAME=nextcloud
+# DB_USER=nextcloud
+# DB_PASS=secure_password
+
+# Example for S3 with custom endpoint:
+# UPLOAD_TYPE=s3
+# AWS_ACCESS_KEY_ID=AKIA...
+# AWS_SECRET_ACCESS_KEY=secret...
+# AWS_REGION=us-west-2
+# S3_BUCKET=my-backup-bucket
+# S3_ENDPOINT_URL=https://s3.us-west-2.amazonaws.com
+
+# Example for SFTP:
+# UPLOAD_TYPE=sftp
+# FTP_HOST=backup.example.com
+# FTP_PORT=22
+# FTP_USERNAME=backup_user
+# FTP_PASSWORD=secure_password
+# FTP_REMOTE_DIR=/backups/nextcloud

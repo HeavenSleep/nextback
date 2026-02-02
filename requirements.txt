@@ -1,0 +1,18 @@
+# Python dependencies for Nextcloud Backup Manager
+
+# For CLI interface
+click>=8.0.0
+
+# For S3 uploads
+boto3>=1.26.0
+botocore>=1.29.0
+
+# For SFTP/FTP uploads
+paramiko>=3.0.0
+
+# For YAML configuration support
+PyYAML>=6.0
+
+# Optional: For advanced logging and monitoring
+# prometheus-client>=0.15.0
+# psutil>=5.9.0
