@@ -1,0 +1,35 @@
+# Include the README and LICENSE
+include README.md
+include LICENSE
+include requirements.txt
+
+# Include configuration templates
+recursive-include config *.template
+
+# Include all shell scripts and Python scripts
+recursive-include nextback/scripts *.sh
+recursive-include nextback/scripts *.py
+recursive-include nextback/scripts/libs *.sh
+
+# Include documentation files
+recursive-include docs *.md *.rst *.txt
+
+# Exclude development and cache files
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude *.pyd
+global-exclude __pycache__
+global-exclude .git*
+global-exclude .DS_Store
+global-exclude *.so
+global-exclude .coverage
+global-exclude .pytest_cache
+
+# Exclude development directories
+prune build
+prune dist
+prune *.egg-info
+prune .eggs
+prune .tox
+prune .venv
+prune .mypy_cache

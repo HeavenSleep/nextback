@@ -40,23 +40,106 @@ The backup system uses a modular architecture with shared functionality:
 - **`scripts/upload.py`**: Remote upload functionality (Python)
 - **`main.py`**: Unified orchestration interface
 
+## Installation
+
+### From PyPI (Recommended)
+
+```bash
+pip install nextback
+```
+
+### From Source
+
+```bash
+git clone https://github.com/heavensleep/nextback.git
+cd nextback
+pip install .
+```
+
+### Development Installation
+
+```bash
+git clone https://github.com/heavensleep/nextback.git
+cd nextback
+pip install -e .[dev]
+```
+
+## Requirements
+
+- Python 3.8+
+- Required Python packages: `click`, `boto3`, `paramiko`, `PyYAML`
+- Nextcloud instance with appropriate permissions
+- Sufficient disk space for backups
+
 ## Quick Start
 
-1. Copy the configuration template:
-   ```bash
-   cp config/backup.conf.template config/backup.conf
-   ```
+### Option 1: Install from PyPI (Recommended)
 
-2. Edit the configuration file with your Nextcloud settings
+```bash
+# Install the package
+pip install nextback
 
-3. Run the main script:
-   ```bash
-   python main.py --help
-   ```
+# Initialize configuration
+nextback init
+
+# Create your first backup
+nextback backup
+```
+
+### Option 2: Install from Source
+
+```bash
+# Clone the repository
+git clone https://github.com/heavensleep/nextback.git
+cd nextback
+
+# Install in development mode
+pip install -e .
+
+# Or install normally
+pip install .
+```
+
+### Option 3: Run Directly from Source
+
+```bash
+# Clone the repository
+git clone https://github.com/heavensleep/nextback.git
+cd nextback
+
+# Copy the configuration template
+cp config/backup.conf.template config/backup.conf
+
+# Edit the configuration file with your Nextcloud settings
+nano config/backup.conf
+
+# Run the main script
+python main.py --help
+```
 
 ## Configuration
 
-Edit `config/backup.conf` with your specific settings:
+### Using the Package Installation
+
+When installed via pip, NextBack will look for configuration files in these locations (in order):
+
+1. `./config/backup.conf` (current directory)
+2. `~/.nextback/config/backup.conf` (user config directory)
+3. Package installation directory
+
+Initialize configuration with:
+```bash
+nextback init
+```
+
+### Manual Configuration
+
+Copy and edit the configuration template:
+```bash
+cp config/backup.conf.template config/backup.conf
+```
+
+Edit the configuration file with your Nextcloud settings:
 
 - Nextcloud installation path
 - Database credentials
